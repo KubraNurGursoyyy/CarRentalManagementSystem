@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SignUpAsCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Customers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Customers">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerSurname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerPhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomerAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecondPhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NationalIdcard" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentalRequests" type="tns:ArrayOfRentalRequests" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentedVehicles" type="tns:ArrayOfRentedVehicles" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRentalRequests">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RentalRequests" nillable="true" type="tns:RentalRequests" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RentalRequests">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RentalRequestId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RentalRequestCustomerId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestedSupplierCompanyId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestedVehicleId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestedPickUpDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestedDropOffDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentalRequestCustomer" type="tns:Customers" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestedSupplierCompany" type="tns:Companies" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestedVehicle" type="tns:Vehicles" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Companies">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyAdress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumOfVehicle" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompanyPoints" nillable="true" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vehicles" type="tns:ArrayOfVehicles" />
+          <s:element minOccurs="0" maxOccurs="1" name="Employees" type="tns:ArrayOfEmployees" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentalRequests" type="tns:ArrayOfRentalRequests" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentedVehicles" type="tns:ArrayOfRentedVehicles" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfVehicles">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Vehicles" nillable="true" type="tns:Vehicles" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Vehicles">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="VehicleId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleModel" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehiclesInstantKm" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HasAirbag" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="TrunkVolume" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SeatingCapacity" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DailyRentalPrice" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="AgeLimitForDrivingThisCar" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="KmLimitPerDay" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequiredDrivingLicenseAge" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsAvailableAtTime" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehiclesCompanyId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentalRequests" type="tns:ArrayOfRentalRequests" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentedVehicles" type="tns:ArrayOfRentedVehicles" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfRentedVehicles">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="RentedVehicles" nillable="true" type="tns:RentedVehicles" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RentedVehicles">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RentId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RentedVehicleId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="SupplierCompanyId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DriverCustomerId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PickUpDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="DropOffDate" type="s:dateTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehiclesPickUpKm" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="VehiclesDropOffKm" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RentalPrice" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="DriverCustomer" type="tns:Customers" />
+          <s:element minOccurs="0" maxOccurs="1" name="RentedVehicle" type="tns:Vehicles" />
+          <s:element minOccurs="0" maxOccurs="1" name="SupplierCompany" type="tns:Companies" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfEmployees">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Employees" nillable="true" type="tns:Employees" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Employees">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="EmployeesId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="EmployeesCompanyId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeesEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployessPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeesPhoneNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeesAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmployeesCompany" type="tns:Companies" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SignUpAsCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SignUpAsCustomerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogInAsCustomer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LogInAsCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LogInAsCustomerResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCustomerAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeleteCustomerAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeleteCustomerAccountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="entity" type="tns:Customers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="UpdateAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="UpdateAccountResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAllCustomer">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetAllCustomerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAllCustomerResult" type="tns:ArrayOfCustomers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCustomers">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Customers" nillable="true" type="tns:Customers" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetCustomerInformationByID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCustomerInformationByIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCustomerInformationByIDResult" type="tns:Customers" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SignUpAsCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:SignUpAsCustomer" />
+  </wsdl:message>
+  <wsdl:message name="SignUpAsCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:SignUpAsCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="LogInAsCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:LogInAsCustomer" />
+  </wsdl:message>
+  <wsdl:message name="LogInAsCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:LogInAsCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomerAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerAccount" />
+  </wsdl:message>
+  <wsdl:message name="DeleteCustomerAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:DeleteCustomerAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:UpdateAccount" />
+  </wsdl:message>
+  <wsdl:message name="UpdateAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:UpdateAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomerSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAllCustomer" />
+  </wsdl:message>
+  <wsdl:message name="GetAllCustomerSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAllCustomerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerInformationByIDSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCustomerInformationByID" />
+  </wsdl:message>
+  <wsdl:message name="GetCustomerInformationByIDSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCustomerInformationByIDResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CustomerWebServiceSoap">
+    <wsdl:operation name="SignUpAsCustomer">
+      <wsdl:input message="tns:SignUpAsCustomerSoapIn" />
+      <wsdl:output message="tns:SignUpAsCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="LogInAsCustomer">
+      <wsdl:input message="tns:LogInAsCustomerSoapIn" />
+      <wsdl:output message="tns:LogInAsCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomerAccount">
+      <wsdl:input message="tns:DeleteCustomerAccountSoapIn" />
+      <wsdl:output message="tns:DeleteCustomerAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <wsdl:input message="tns:UpdateAccountSoapIn" />
+      <wsdl:output message="tns:UpdateAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomer">
+      <wsdl:input message="tns:GetAllCustomerSoapIn" />
+      <wsdl:output message="tns:GetAllCustomerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInformationByID">
+      <wsdl:input message="tns:GetCustomerInformationByIDSoapIn" />
+      <wsdl:output message="tns:GetCustomerInformationByIDSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomerWebServiceSoap" type="tns:CustomerWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SignUpAsCustomer">
+      <soap:operation soapAction="http://tempuri.org/SignUpAsCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogInAsCustomer">
+      <soap:operation soapAction="http://tempuri.org/LogInAsCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomerAccount">
+      <soap:operation soapAction="http://tempuri.org/DeleteCustomerAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <soap:operation soapAction="http://tempuri.org/UpdateAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomer">
+      <soap:operation soapAction="http://tempuri.org/GetAllCustomer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInformationByID">
+      <soap:operation soapAction="http://tempuri.org/GetCustomerInformationByID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CustomerWebServiceSoap12" type="tns:CustomerWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SignUpAsCustomer">
+      <soap12:operation soapAction="http://tempuri.org/SignUpAsCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogInAsCustomer">
+      <soap12:operation soapAction="http://tempuri.org/LogInAsCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteCustomerAccount">
+      <soap12:operation soapAction="http://tempuri.org/DeleteCustomerAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccount">
+      <soap12:operation soapAction="http://tempuri.org/UpdateAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllCustomer">
+      <soap12:operation soapAction="http://tempuri.org/GetAllCustomer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCustomerInformationByID">
+      <soap12:operation soapAction="http://tempuri.org/GetCustomerInformationByID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CustomerWebService">
+    <wsdl:port name="CustomerWebServiceSoap" binding="tns:CustomerWebServiceSoap">
+      <soap:address location="http://localhost:56717/CustomerWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CustomerWebServiceSoap12" binding="tns:CustomerWebServiceSoap12">
+      <soap12:address location="http://localhost:56717/CustomerWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

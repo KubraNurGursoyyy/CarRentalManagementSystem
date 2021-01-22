@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Giriş</title>
+    <link rel="stylesheet" href="~/Contents/LogInAndSignUpCSS.css">
+</head>
+<body>
+    @using (Html.BeginForm("LogInView", "LogInAndSignUp", FormMethod.Post))
+    { 
+        @Html.AntiForgeryToken();
+        <div class="modal-content animate">
+            <div class="container">
+                <label for="username"><b>Kullanıcı Adı</b></label>
+                <input type="text" placeholder="Kulanıcı adınızı girin*" name="username">
+                <label for="userpassword"><b>Şifre</b></label>
+                <input type="password" placeholder="Şifrenizi girin*" name="userpassword">
+                <p style="text-align: center"><b>Nasıl giriş yapmak istersiniz ?</b></p>
+                <input type="submit" name="Login" value="Kullanıcı Girişi" />
+                <input type="submit" name="Login" value="Çalışan Girişi" />
+                <input type="submit" name="Login" value="Şirket Girişi" />
+                <div class="container" style="background-color: #fefefe">
+                    <p style="text-align: center; color: darkgray">veya</p>
+                    <input type="submit" name="Login" value="Kaydol" />
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>
