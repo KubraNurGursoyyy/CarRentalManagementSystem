@@ -1,4 +1,4 @@
-﻿
+﻿@model CarRentalManagementSystem.Web.Models.LoginModel
 @{
     Layout = null;
 }
@@ -8,6 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Giriş</title>
     <link rel="stylesheet" href="~/Contents/LogInAndSignUpCSS.css">
+    <script type="text/javascript" src="~/Scripts/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-3.5.1.js"></script>
 </head>
 <body>
     @using (Html.BeginForm("LogInView", "LogInAndSignUp", FormMethod.Post))
@@ -16,13 +18,13 @@
         <div class="modal-content animate">
             <div class="container">
                 <label for="username"><b>Kullanıcı Adı</b></label>
-                <input type="text" placeholder="Kulanıcı adınızı girin*" name="username">
+                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "container", @placeholder = "Kulanıcı adınızı girin*", @id = "username"} })
                 <label for="userpassword"><b>Şifre</b></label>
-                <input type="password" placeholder="Şifrenizi girin*" name="userpassword">
+                @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "container", @placeholder = "Kulanıcı adınızı girin*", @id = "userpassword" } })
                 <p style="text-align: center"><b>Nasıl giriş yapmak istersiniz ?</b></p>
-                <input type="submit" name="Login" value="Kullanıcı Girişi" />
-                <input type="submit" name="Login" value="Çalışan Girişi" />
-                <input type="submit" name="Login" value="Şirket Girişi" />
+                <input type="submit" id="CustomerLogin" name="Login" value="Kullanıcı Girişi" />
+                <input type="submit" id="EmployeeLogin" name="Login" value="Çalışan Girişi" />
+                <input type="submit" id="CompanyLogin" name="Login" value="Şirket Girişi" />
                 <div class="container" style="background-color: #fefefe">
                     <p style="text-align: center; color: darkgray">veya</p>
                     <input type="submit" name="Login" value="Kaydol" />
@@ -30,5 +32,22 @@
             </div>
         </div>
     }
+    <script>
+        $("#CustomerLogin").click(function () {
+            if (($("#username").html == "") || ($("#userpassword").html == "")) {
+                alert("Lütfen boş bırakmayınız...");
+            }
+        })
+        $("#EmployeeLogin").click(function () {
+            if (($("#username").html == "") || ($("#userpassword").html == "")) {
+                alert("Lütfen boş bırakmayınız...");
+            }
+        })
+        $("#CompanyLogin").click(function () {
+            if (($("#username").html == "") || ($("#userpassword").html == "")) {
+                alert("Lütfen boş bırakmayınız...");
+            }
+        })
+    </script>
 </body>
 </html>

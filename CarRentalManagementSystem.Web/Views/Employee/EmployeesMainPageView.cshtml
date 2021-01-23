@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CarRental.Models.Concretes.RentalRequests>
+
+@{
+    ViewBag.Title = "Employees Main Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Contents/EmployeesMainPages.css">
+</head>
+<body>
+    <h2>Hpşgeldiniz</h2>
+    <h3>Bekleyen tüm istekler aşağıda sıralanmaktadır.</h3>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Encode("Kiralamak isteyen müşteri")
+            </th>
+            <th>
+                @Html.Encode("Kiralamak istediği araç")
+            </th>
+            <th>
+                @Html.Encode("Kiralamaya başlayacağı zaman")
+            </th>
+            <th>
+                @Html.Encode("Aracı iade edeceği zaman")
+            </th>
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentalRequestCustomerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestedVehicleId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestedPickUpDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequestedDropOffDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Onayla", "AprroveRequest", new { id = item.RentalRequestId }) |
+                    @Html.ActionLink("Reddet", "DenyRequest", new { id = item.RentalRequestId })
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>

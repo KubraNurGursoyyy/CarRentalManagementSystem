@@ -1,5 +1,6 @@
 ﻿using CarRental.Commons.Concretes.Helper;
 using CarRental.Commons.Concretes.Logger;
+using CarRentalManagementSystem.Web.Models;
 using System;
 using System.Web.Mvc;
 
@@ -22,24 +23,25 @@ namespace CarRentalManagementSystem.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult LogInView(FormCollection collection)
+        public ActionResult LogInView(FormCollection collection,LoginModel loginModel)
         {
             try
             {
-                TempData["username"] = collection["username"];
-                TempData["password"] = collection["userpassword"];
-                switch (collection["Login"])
+                
+                if (!(loginModel.Username == ("").ToString()) && !(loginModel.UserPassword == ("").ToString()))
                 {
-                    case "Kaydol":
-                        return RedirectToAction("SignUpAs");
-                    case "Kullanıcı Girişi":
-                        return RedirectToAction("LogInCustomer", "Customer");
-                    case "Çalışan Girişi":
-                        ViewBag.Message = "The operation was cancelled!";
-                        return View();
-                    case "Şirket Girişi":
-                        ViewBag.Message = "The operation was cancelled!";
-                        return View();
+                    switch (collection["Login"])
+                    {
+                        case "Kaydol":
+                            return RedirectToAction("SignUpAs");
+                        case "Kullanıcı Girişi":
+                            return RedirectToAction("LogInCustomer", "Customer",loginModel);
+                        case "Çalışan Girişi":
+                            return RedirectToAction("LogInEmployee", "Employee",loginModel);
+                        case "Şirket Girişi":
+                            return RedirectToAction("LogInCompany", "Company", loginModel);
+
+                    }
                 }
                 return View();
             }
