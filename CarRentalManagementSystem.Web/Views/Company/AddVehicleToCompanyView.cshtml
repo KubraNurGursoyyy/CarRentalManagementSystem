@@ -1,0 +1,106 @@
+﻿@model CarRental.Models.Concretes.Vehicles
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Araç Kayıt</title>
+    <link rel="stylesheet" href="~/Contents/LogInAndSignUpCSS.css">
+
+</head>
+<body>
+    @using (Html.BeginForm("AddVehicleToCompany", "Company", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+        <div class="modal-content animate">
+            <div class="container">
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.VehicleName, "Aracın Adı", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.VehicleName, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.VehicleName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.VehicleModel, "Model", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.VehicleModel, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.VehicleModel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.SeatingCapacity, "Oturma Kapasitesi", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SeatingCapacity, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.SeatingCapacity, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.TrunkVolume, "Bagaj Hacmi", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TrunkVolume, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.TrunkVolume, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.RequiredDrivingLicenseAge, "Gerekli Ehliyet Yaşı", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.RequiredDrivingLicenseAge, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.RequiredDrivingLicenseAge, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.KmLimitPerDay, "Günlük Km Limiti", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.KmLimitPerDay, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.KmLimitPerDay, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.AgeLimitForDrivingThisCar, "Bu Aracı Sürebilmek İçin Gerekli Yaş Sınırı", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AgeLimitForDrivingThisCar, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.AgeLimitForDrivingThisCar, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.VehiclesInstantKm, "Aracın Şu Anki Kmsi", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.VehiclesInstantKm, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.VehiclesInstantKm, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.DailyRentalPrice, "Günlük Kiralama Ücreti", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.DailyRentalPrice, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.DailyRentalPrice, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.HasAirbag, "Hava Yastığı Var Mı ?", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.HasAirbag, new { htmlAttributes = new { @class = "form-control", @placeholder = "Evet ya da Hayır  Şeklinde Yazınız*", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.HasAirbag, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <input type="submit" name="savevehicle" value="Kaydet" />
+            </div>
+        </div>
+    }
+</body>
+</html>

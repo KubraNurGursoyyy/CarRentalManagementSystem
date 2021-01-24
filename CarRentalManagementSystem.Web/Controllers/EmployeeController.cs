@@ -123,7 +123,7 @@ namespace CarRentalManagementSystem.Web.Controllers
                                 DriverCustomerId = rentalreq.RentalRequestCustomerId
                             
                             };
-
+                            DeleteRequest(ID);
                             return rentedvehicleWebSoapClient.RentVehicle(rentvehicle);
                         }
                     }

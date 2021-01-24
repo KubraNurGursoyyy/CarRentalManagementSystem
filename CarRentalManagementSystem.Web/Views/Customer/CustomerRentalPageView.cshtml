@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CarRental.Models.Concretes.RentalRequests>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CustomerRentalPageView</title>
+</head>
+<body>
+    <div>  
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.Encode("Aracın Şirketi")
+                    </th>
+                    <th>
+                        @Html.Encode("Araç")
+                    </th>
+                    <th>
+                        @Html.Encode("Kiralamaya başlanacağı zaman")
+                    </th>
+                    <th>
+                        @Html.Encode("Aracı iade edileceği zaman")
+                    </th>
+                    <th></th>
+                </tr>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequestedSupplierCompanyId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequestedVehicleId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequestedPickUpDate)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RequestedDropOffDate)
+                        </td>
+                        <td>
+                            @Html.ActionLink("İptal Et", "CancelRequest", new { id = item.RentalRequestId })
+                        </td>
+                    </tr>
+                }
+            </table>
+
+    </div>
+</body>
+</html>

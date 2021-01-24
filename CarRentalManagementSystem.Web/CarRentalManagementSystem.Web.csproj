@@ -343,13 +343,23 @@
     <None Include="Connected Services\VehicleWebService\VehiclesWebService.wsdl" />
     <None Include="packages.config" />
     <Content Include="Views\LogInAndSignUp\LogInView.cshtml" />
-    <Content Include="Views\Customer\CustomerView.cshtml" />
+    <Content Include="Views\Customer\CustomerMainPageView.cshtml" />
     <Content Include="Views\LogInAndSignUp\SignUpAs.cshtml" />
     <Content Include="Views\Customer\SignUpAsCustomerView.cshtml" />
     <Content Include="Views\Employee\EmployeesMainPageView.cshtml" />
     <Content Include="Scripts\jquery-3.5.1.js" />
     <Content Include="Views\Company\CompanyView.cshtml" />
     <Content Include="Views\Company\SignUpAsCompany.cshtml" />
+    <Content Include="Views\Company\CompanysEmployeesView.cshtml" />
+    <Content Include="Views\Company\AddVehicleToCompanyView.cshtml" />
+    <Content Include="Views\Company\CompanysVehiclesView.cshtml" />
+    <Content Include="Views\Company\CompanysRentedVehiclesView.cshtml" />
+    <Content Include="Views\Customer\CustomerVehiclePageView.cshtml" />
+    <Content Include="Views\Customer\CustomerRentalPageView.cshtml" />
+    <Content Include="Views\Customer\CustomerAccountPageView.cshtml" />
+    <Content Include="Views\Customer\MakeARentalRequestView.cshtml" />
+    <Content Include="Views\Customer\ListAllAvaliableVehiclesView.cshtml" />
+    <Content Include="Views\Customer\ListAllAvaliableVehiclesOfCompanyView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
