@@ -15,7 +15,7 @@
     <AssemblyName>CarRentalManagementSystem.Web</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
-    <Use64BitIISExpress />
+    <Use64BitIISExpress>false</Use64BitIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -99,31 +99,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.Customers.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.GetAllCustomerResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.GetCustomerInformationByIDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.LogInAsCustomerResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.SignUpAsCustomerResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.UpdateAccountResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\CustomerWebService\CustomerWebService.disco" />
-    <None Include="Connected Services\CustomerWebService\configuration91.svcinfo" />
-    <None Include="Connected Services\CustomerWebService\configuration.svcinfo" />
-    <None Include="Connected Services\CustomerWebService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Contents\EmployeesMainPages.css" />
     <Content Include="Contents\Images\Image20210121173512.jpg" />
     <Content Include="Contents\LogInAndSignUpCSS.css" />
@@ -132,11 +107,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Connected Services\CustomerWebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -148,7 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <None Include="Connected Services\CustomerWebService\CustomerWebService.wsdl" />
     <None Include="packages.config" />
     <Content Include="Views\LogInAndSignUp\LogInView.cshtml" />
     <Content Include="Views\Customer\CustomerView.cshtml" />
@@ -172,9 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\CustomerWebService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
