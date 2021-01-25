@@ -43,14 +43,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CarRental.Commons">
-      <HintPath>..\..\CarRentalManagementSystem.WebService\CarRentalManagementSystem.WebService\bin\CarRental.Commons.dll</HintPath>
+    <Reference Include="CarRental.BusinessLogic, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\CarRental.BusinessLogic\bin\Debug\CarRental.BusinessLogic.dll</HintPath>
+    </Reference>
+    <Reference Include="CarRental.Commons, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\CarRental.Commons\bin\Debug\CarRental.Commons.dll</HintPath>
     </Reference>
     <Reference Include="CarRental.Models">
-      <HintPath>..\..\CarRentalManagementSystem\CarRental.Models\bin\Debug\CarRental.Models.dll</HintPath>
-    </Reference>
-    <Reference Include="CarRentalManagementSystem.WebService">
-      <HintPath>..\..\CarRentalManagementSystem.WebService\CarRentalManagementSystem.WebService\bin\CarRentalManagementSystem.WebService.dll</HintPath>
+      <HintPath>..\..\CarRental.Models\bin\Debug\CarRental.Models.dll</HintPath>
     </Reference>
     <Reference Include="IdentityModel, Version=4.4.0.0, Culture=neutral, PublicKeyToken=e7877f4675df049f, processorArchitecture=MSIL">
       <HintPath>..\packages\IdentityModel.4.4.0\lib\net472\IdentityModel.dll</HintPath>
@@ -125,166 +127,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Connected Services\CompanyWebService\CarRentalManagementSystem.Web.CompanyWebService.Companies.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CompanyWebService\CarRentalManagementSystem.Web.CompanyWebService.GetAllCompaniesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CompanyWebService\CarRentalManagementSystem.Web.CompanyWebService.GetCompanyInformationByIDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CompanyWebService\CarRentalManagementSystem.Web.CompanyWebService.LogInAsCompanyResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CompanyWebService\CarRentalManagementSystem.Web.CompanyWebService.SignUpAsCompanyResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CompanyWebService\CarRentalManagementSystem.Web.CompanyWebService.UpdateAccountResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\CompanyWebService\CompaniesWebService.disco" />
-    <None Include="Connected Services\CompanyWebService\configuration91.svcinfo" />
-    <None Include="Connected Services\CompanyWebService\configuration.svcinfo" />
-    <None Include="Connected Services\CompanyWebService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.Customers.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.GetAllCustomerResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.GetCustomerInformationByIDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.LogInAsCustomerResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.SignUpAsCustomerResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\CustomerWebService\CarRentalManagementSystem.Web.CustomerWebService.UpdateAccountResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\CompanyWebService\CompaniesWebService.wsdl" />
-    <None Include="Connected Services\CustomerWebService\CustomerWebService.disco" />
-    <None Include="Connected Services\CustomerWebService\configuration91.svcinfo" />
-    <None Include="Connected Services\CustomerWebService\configuration.svcinfo" />
-    <None Include="Connected Services\CustomerWebService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\EmployeeWebService\CarRentalManagementSystem.Web.EmployeeWebService.Employees.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\EmployeeWebService\CarRentalManagementSystem.Web.EmployeeWebService.GetAllEmployeesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\EmployeeWebService\CarRentalManagementSystem.Web.EmployeeWebService.GetCompanysAllEmployeesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\EmployeeWebService\CarRentalManagementSystem.Web.EmployeeWebService.GetEmployeeInformationByIDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\EmployeeWebService\CarRentalManagementSystem.Web.EmployeeWebService.LogInAsEmployeeResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\EmployeeWebService\CarRentalManagementSystem.Web.EmployeeWebService.SignUpAsEmployeeResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\EmployeeWebService\CarRentalManagementSystem.Web.EmployeeWebService.UpdateAccountResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\EmployeeWebService\EmployeesWebService.disco" />
-    <None Include="Connected Services\EmployeeWebService\configuration91.svcinfo" />
-    <None Include="Connected Services\EmployeeWebService\configuration.svcinfo" />
-    <None Include="Connected Services\EmployeeWebService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\RentalRequestWebService\CarRentalManagementSystem.Web.RentalRequestWebService.GetCompanysRentalRequestsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentalRequestWebService\CarRentalManagementSystem.Web.RentalRequestWebService.GetCustomersRentalRequestsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentalRequestWebService\CarRentalManagementSystem.Web.RentalRequestWebService.GetRentalRequestByIDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentalRequestWebService\CarRentalManagementSystem.Web.RentalRequestWebService.GetRentalRequestsResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentalRequestWebService\CarRentalManagementSystem.Web.RentalRequestWebService.MakeRentalRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentalRequestWebService\CarRentalManagementSystem.Web.RentalRequestWebService.RentalRequests.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentalRequestWebService\CarRentalManagementSystem.Web.RentalRequestWebService.UpdateRentalRequestResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\RentalRequestWebService\RentalRequestWebService.disco" />
-    <None Include="Connected Services\RentalRequestWebService\configuration91.svcinfo" />
-    <None Include="Connected Services\RentalRequestWebService\configuration.svcinfo" />
-    <None Include="Connected Services\RentalRequestWebService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\RentedVehicleService\CarRentalManagementSystem.Web.RentedVehicleService.GetCompanysRentedVehiclesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentedVehicleService\CarRentalManagementSystem.Web.RentedVehicleService.GetCustomersRentedVehiclesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentedVehicleService\CarRentalManagementSystem.Web.RentedVehicleService.GetRentedVehicleByIdResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentedVehicleService\CarRentalManagementSystem.Web.RentedVehicleService.RentedVehicles.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\RentedVehicleService\CarRentalManagementSystem.Web.RentedVehicleService.RentVehicleResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\RentedVehicleService\RentedVehiclesWebService.disco" />
-    <None Include="Connected Services\RentedVehicleService\configuration91.svcinfo" />
-    <None Include="Connected Services\RentedVehicleService\configuration.svcinfo" />
-    <None Include="Connected Services\RentedVehicleService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <Content Include="Connected Services\VehicleWebService\CarRentalManagementSystem.Web.VehicleWebService.AddVehicleResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\VehicleWebService\CarRentalManagementSystem.Web.VehicleWebService.GetAllAvaliableVehiclesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\VehicleWebService\CarRentalManagementSystem.Web.VehicleWebService.GetCompanysAllRentedVehiclesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\VehicleWebService\CarRentalManagementSystem.Web.VehicleWebService.GetCompanysAllVehiclesResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\VehicleWebService\CarRentalManagementSystem.Web.VehicleWebService.GetVehicleByIDResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\VehicleWebService\CarRentalManagementSystem.Web.VehicleWebService.RentedVehicles.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\VehicleWebService\CarRentalManagementSystem.Web.VehicleWebService.UpdateVehicleResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\VehicleWebService\CarRentalManagementSystem.Web.VehicleWebService.Vehicles.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Connected Services\VehicleWebService\VehiclesWebService.disco" />
-    <None Include="Connected Services\VehicleWebService\configuration91.svcinfo" />
-    <None Include="Connected Services\VehicleWebService\configuration.svcinfo" />
-    <None Include="Connected Services\VehicleWebService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Contents\EmployeesMainPages.css" />
     <Content Include="Contents\Images\Image20210121173512.jpg" />
     <Content Include="Contents\LogInAndSignUpCSS.css" />
@@ -294,36 +136,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Connected Services\CompanyWebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\CustomerWebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\EmployeeWebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\RentalRequestWebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\RentedVehicleService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Connected Services\VehicleWebService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\EmployeeController.cs" />
@@ -336,11 +148,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <None Include="Connected Services\CustomerWebService\CustomerWebService.wsdl" />
-    <None Include="Connected Services\EmployeeWebService\EmployeesWebService.wsdl" />
-    <None Include="Connected Services\RentalRequestWebService\RentalRequestWebService.wsdl" />
-    <None Include="Connected Services\RentedVehicleService\RentedVehiclesWebService.wsdl" />
-    <None Include="Connected Services\VehicleWebService\VehiclesWebService.wsdl" />
     <None Include="packages.config" />
     <Content Include="Views\LogInAndSignUp\LogInView.cshtml" />
     <Content Include="Views\Customer\CustomerMainPageView.cshtml" />
@@ -374,14 +181,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\CompanyWebService\" />
-    <WCFMetadataStorage Include="Connected Services\CustomerWebService\" />
-    <WCFMetadataStorage Include="Connected Services\EmployeeWebService\" />
-    <WCFMetadataStorage Include="Connected Services\RentalRequestWebService\" />
-    <WCFMetadataStorage Include="Connected Services\RentedVehicleService\" />
-    <WCFMetadataStorage Include="Connected Services\VehicleWebService\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CarRental.Models.Concretes.Companies>
+﻿@model CarRental.Models.Concretes.Companies
 
 @{
     ViewBag.Title = "Company Main Page";
@@ -16,11 +16,11 @@
     <div class="navbar">
         <div class="subnav" style="float:right">
             @Html.ActionLink("Çalışanlar", "CompanysEmployeesView") |
-            @Html.ActionLink("Araçlarım", "CompanysVehiclesView") |
+            @Html.ActionLink("Araçlarım", "CompanysVehiclesView",Model.CompanyId) |
             @Html.ActionLink("Kiralamalar", "CompanysRentedVehiclesView")
         </div>
     </div>
-    <h2>Hpşgeldiniz</h2>
-    <h3>BHangi İşlemi Yapmak İstersiniz?</h3>
+    <h2>Hoşgeldiniz</h2>
+    <h3>Hangi İşlemi Yapmak İstersiniz?</h3>
 </body>
 </html>

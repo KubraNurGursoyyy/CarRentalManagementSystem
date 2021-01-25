@@ -1,0 +1,16 @@
+﻿	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.BusinessLogic
+	Method		: LogIn
+	Date		: 15:18:52
+	Time		: 24.01.2021
+	Error		: CarRental.BusinessLogic.Concretes:CompanyBusiness:LogIn::Error occured.
+	Stack Trace	: konum: CarRental.BusinessLogic.Concretes.CompanyBusiness.LogIn(String Email, String Password) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\Concretes\CompanyBusiness.cs içinde: satır 135
+   konum: CarRentalManagementSystem.Web.Controllers.CompanyController.LoginCompany(String username, String password) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRentalManagementSystem.Web\CarRentalManagementSystem.Web\Controllers\CompanyController.cs içinde: satır 361
+	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.DataAccess
+	Method		: GetAll
+	Date		: 15:18:52
+	Time		: 24.01.2021
+	Error		: CarRental.DataAccess.Concretes:CompanyRepository:GetAll::Error occured.
+	Stack Trace	: konum: CarRental.DataAccess.Concretes.CompanyRepository.GetAll() D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.DataAccess\Concretes\CompanyRepository.cs içinde: satır 222
+   konum: CarRental.BusinessLogic.Concretes.CompanyBusiness.LogIn(String Email, String Password) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\Concretes\CompanyBusiness.cs içinde: satır 122

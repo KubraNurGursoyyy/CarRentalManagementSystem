@@ -1,0 +1,24 @@
+﻿	--------------------[Wrap Exception]--------------------
+	Source		: CarRentalManagementSystem.Web
+	Method		: CompanySignUp
+	Date		: 12:55:47
+	Time		: 25.01.2021
+	Error		: CompanyController::InsertCoompany::Error occured.
+	Stack Trace	: konum: CarRentalManagementSystem.Web.Controllers.CompanyController.CompanySignUp(Companies companies) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem.Web\CarRentalManagementSystem.Web\Controllers\CompanyController.cs içinde: satır 167
+   konum: CarRentalManagementSystem.Web.Controllers.CompanyController.SignUpAsCompany(Companies companies) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem.Web\CarRentalManagementSystem.Web\Controllers\CompanyController.cs içinde: satır 58
+	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.BusinessLogic
+	Method		: Insert
+	Date		: 12:55:47
+	Time		: 25.01.2021
+	Error		: CarRental.BusinessLogic.Concretes: CarRental.Models.Concretes.Companies::Insert:Error occured.
+	Stack Trace	: konum: CarRental.BusinessLogic.Concretes.CompanyBusiness.Insert(Companies entity) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\Concretes\CompanyBusiness.cs içinde: satır 27
+   konum: CarRentalManagementSystem.Web.Controllers.CompanyController.CompanySignUp(Companies companies) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem.Web\CarRentalManagementSystem.Web\Controllers\CompanyController.cs içinde: satır 161
+	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.DataAccess
+	Method		: Insert
+	Date		: 12:55:47
+	Time		: 25.01.2021
+	Error		: CarRental.DataAccess.Concretes: CarRental.Models.Concretes.Companies::Insert:Error occured.
+	Stack Trace	: konum: CarRental.DataAccess.Concretes.CompanyRepository.Insert(Companies entity) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.DataAccess\Concretes\CompanyRepository.cs içinde: satır 88
+   konum: CarRental.BusinessLogic.Concretes.CompanyBusiness.Insert(Companies entity) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\Concretes\CompanyBusiness.cs içinde: satır 20

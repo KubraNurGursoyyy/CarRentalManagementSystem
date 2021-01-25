@@ -17,6 +17,7 @@
     @using (Html.BeginForm("CustomerSignUp", "Customer", FormMethod.Post))
      {
         @Html.AntiForgeryToken();
+        
         <div class="modal-content animate">
             <div class="container">
                 <b> @Html.LabelFor(model => model.CustomerName, "İsim", htmlAttributes: new { @class = "control-label col-md-2" })</b>
@@ -43,8 +44,9 @@
                 <div class="form-group">
                     <b> @Html.LabelFor(model => model.CustomerPassword, "Şifre", htmlAttributes: new { @class = "control-label col-md-2" })</b>
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.CustomerPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Şifrenizi Giriniz*", @type = "Password", @required="required" } })
+                        @Html.EditorFor(model =>model.CustomerPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Şifrenizi Giriniz*", @type = "Password", @required="required" } })
                         @Html.ValidationMessageFor(model => model.CustomerPassword, "", new { @class = "text-danger" })
+                       
                     </div>
                 </div>
 

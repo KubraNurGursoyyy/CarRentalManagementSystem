@@ -20,7 +20,7 @@
                 <label for="username"><b>Kullanıcı Adı</b></label>
                 @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "container", @placeholder = "Kulanıcı adınızı girin*", @id = "username"} })
                 <label for="userpassword"><b>Şifre</b></label>
-                @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "container", @placeholder = "Kulanıcı adınızı girin*", @id = "userpassword" } })
+                @Html.EditorFor(model => model.UserPassword, new { htmlAttributes = new { @class = "container", @placeholder = "Kulanıcı adınızı girin*", @type="password", @id = "userpassword" } })
                 <p style="text-align: center"><b>Nasıl giriş yapmak istersiniz ?</b></p>
                 <input type="submit" id="CustomerLogin" name="Login" value="Kullanıcı Girişi" />
                 <input type="submit" id="EmployeeLogin" name="Login" value="Çalışan Girişi" />

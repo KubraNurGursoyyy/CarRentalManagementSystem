@@ -27,13 +27,16 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
+                if (collection["Login"]== "Kaydol")
+                {
+                    return RedirectToAction("SignUpAs");
+                }
                 
-                if (!(loginModel.Username == ("").ToString()) && !(loginModel.UserPassword == ("").ToString()))
+                else if (!(loginModel.Username == null) && !(loginModel.UserPassword == null))
                 {
                     switch (collection["Login"])
-                    {
-                        case "Kaydol":
-                            return RedirectToAction("SignUpAs");
+                    { 
+                            
                         case "Kullanıcı Girişi":
                             return RedirectToAction("LogInCustomer", "Customer",loginModel);
                         case "Çalışan Girişi":

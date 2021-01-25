@@ -1,0 +1,8 @@
+﻿	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.DataAccess
+	Method		: Insert
+	Date		: 12:55:43
+	Time		: 25.01.2021
+	Error		: CarRental.DataAccess.Concretes: CarRental.Models.Concretes.Companies::Insert:Error occured.
+	Stack Trace	: konum: CarRental.DataAccess.Concretes.CompanyRepository.Insert(Companies entity) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.DataAccess\Concretes\CompanyRepository.cs içinde: satır 88
+   konum: CarRental.BusinessLogic.Concretes.CompanyBusiness.Insert(Companies entity) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\Concretes\CompanyBusiness.cs içinde: satır 20

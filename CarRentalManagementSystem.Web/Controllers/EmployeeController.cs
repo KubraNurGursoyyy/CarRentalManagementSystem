@@ -4,12 +4,15 @@ using System.Linq;
 using System.Web.Mvc;
 using CarRental.Commons.Concretes.Helper;
 using CarRental.Commons.Concretes.Logger;
+using RentedVehicles = CarRental.Models.Concretes.RentedVehicles;
+using Vehicles = CarRental.Models.Concretes.Vehicles;
 using RentalRequests = CarRental.Models.Concretes.RentalRequests;
 using Employee = CarRental.Models.Concretes.Employees;
-using CarRentalManagementSystem.Web.EmployeeWebService;
-using CarRentalManagementSystem.Web.RentalRequestWebService;
-using CarRentalManagementSystem.Web.VehicleWebService;
-using CarRentalManagementSystem.Web.RentedVehicleService;
+using CarRental.BusinessLogic.Concretes;
+using CarRental.BusinessLogic;
+using CarRentalManagementSystem.Web.Models;
+using System.Web.Security;
+using CarRental.Commons.Concretes.Encryption;
 
 namespace CarRentalManagementSystem.Web.Controllers
 {
@@ -20,6 +23,28 @@ namespace CarRentalManagementSystem.Web.Controllers
         public ViewResult EmployeesMainPageView()
         {
             return View();
+        }
+        public ActionResult EmployeeLogin(LoginModel loginModel)
+        {
+            string ViewName = "EmployeesMainPageView";
+            try
+            {
+                loginModel.UserPassword = Encryption(loginModel.UserPassword);
+                if (LoginEmployee(loginModel.Username, loginModel.UserPassword))
+                {
+                    FormsAuthentication.SetAuthCookie(loginModel.Username, true);
+                    return RedirectToAction(ViewName);
+                }
+                else
+                {
+                    return RedirectToAction("LogInView", "LogInAndSignUp");
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CustomerController::LogInCustomer::Error occured.", ex);
+            }
         }
         public ActionResult ListAllRequestOfCompany(int companyid)
         {
@@ -65,13 +90,43 @@ namespace CarRentalManagementSystem.Web.Controllers
             }
         }
         #region PRIVATE METHODS
+        private string Encryption(string password)
+        {
+            return Sha1Encryption.SHA1(password);
+        }
+        private int GetIDByUsername(string username)
+        {
+            try
+            {
+                using (var companyBusiness = new CompanyBusiness())
+                {
+                    int responseID = -1;
+                    foreach (var item in companyBusiness.GetAll())
+                    {
+                        if (item.CompanyEmail == username)
+                        {
+                            responseID = item.CompanyId;
+                            break;
+                        }
+                    }
+                    return responseID;
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Customer doesn't exists.");
+            }
+
+
+        }
         private bool LoginEmployee(string username, string password)
         {
             try
             {
-                using (var EmployeeSoapClient = new EmployeesWebServiceSoapClient())
+                using (var EmployeeBusiness = new EmployeeBusiness())
                 {
-                    return EmployeeSoapClient.LogInAsEmployee(username, password);
+                    return EmployeeBusiness.LogIn(username, password);
                 }
             }
             catch (Exception ex)
@@ -85,9 +140,9 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var rentalRequestWebSoapClient = new RentalRequestWebServiceSoapClient())
+                using (var rentalRequestBusiness = new RentalRequestBusiness())
                 {
-                    return rentalRequestWebSoapClient.CancelRentalRequest(ID);
+                    return rentalRequestBusiness.DeleteById(ID);
                 }
             }
             catch (Exception ex)
@@ -101,17 +156,17 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var rentalRequestWebSoapClient = new RentalRequestWebServiceSoapClient())
+                using (var rentalRequesBusiness = new RentalRequestBusiness())
                 {
-                    
-                    RentalRequestWebService.RentalRequests rentalreq = rentalRequestWebSoapClient.GetRentalRequestByID(ID);
+
+                    RentalRequests rentalreq = rentalRequesBusiness.GetByID(ID);
                     var rentingtime = Convert.ToInt32(rentalreq.RequestedDropOffDate.Date - rentalreq.RequestedPickUpDate.Date);
-                    using (var vehicleWebSoapClient = new VehiclesWebServiceSoapClient())
+                    using (var vehicleBusiness = new VehicleBusiness())
                     {
-                        VehicleWebService.Vehicles reqvehicle = vehicleWebSoapClient.GetVehicleByID(rentalreq.RequestedVehicleId);
-                        using (var rentedvehicleWebSoapClient = new RentedVehiclesWebServiceSoapClient())
+                       Vehicles reqvehicle = vehicleBusiness.GetByID(rentalreq.RequestedVehicleId);
+                        using (var rentedvehicleBusiness = new RentedVehicleBusiness())
                         {
-                            RentedVehicleService.RentedVehicles rentvehicle = new RentedVehicleService.RentedVehicles()
+                            RentedVehicles rentvehicle = new RentedVehicles()
                             {
                                 RentalPrice = reqvehicle.DailyRentalPrice * rentingtime,
                                 DropOffDate = rentalreq.RequestedDropOffDate,
@@ -121,10 +176,10 @@ namespace CarRentalManagementSystem.Web.Controllers
                                 SupplierCompanyId = rentalreq.RequestedSupplierCompanyId,
                                 RentedVehicleId = rentalreq.RequestedVehicleId,
                                 DriverCustomerId = rentalreq.RentalRequestCustomerId
-                            
+
                             };
                             DeleteRequest(ID);
-                            return rentedvehicleWebSoapClient.RentVehicle(rentvehicle);
+                            return rentedvehicleBusiness.Insert(rentvehicle);
                         }
                     }
                 }
@@ -140,10 +195,10 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var rentalRequestWebSoapClient = new RentalRequestWebServiceSoapClient())
+                using (var companyBusiness = new CompanyBusiness())
                 {
                     List<RentalRequests> rentalRequests = new List<RentalRequests>();
-                    foreach (var responsedRequests in rentalRequestWebSoapClient.GetCompanysRentalRequests(companyid).OrderBy(x => x.RentalRequestId).ToList())
+                    foreach (var responsedRequests in companyBusiness.GetByID(companyid).RentalRequests)
                     {
                         RentalRequests castedRequests = new RentalRequests()
                         {
@@ -171,10 +226,10 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var employeesSoapClient = new EmployeesWebServiceSoapClient())
+                using (var employeesBusiness = new EmployeeBusiness())
                 {
                     Employee castedEmployee = null;
-                    EmployeeWebService.Employees responsedEmployee = employeesSoapClient.GetEmployeeInformationByID(ID);
+                    Employee responsedEmployee = employeesBusiness.GetByID(ID);
                     if (responsedEmployee != null)
                     {
                         castedEmployee = new Employee()

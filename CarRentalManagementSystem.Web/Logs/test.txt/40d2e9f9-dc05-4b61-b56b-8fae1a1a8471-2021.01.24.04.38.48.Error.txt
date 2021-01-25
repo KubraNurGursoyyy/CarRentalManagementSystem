@@ -1,0 +1,8 @@
+﻿	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.DataAccess
+	Method		: GetAll
+	Date		: 16:38:48
+	Time		: 24.01.2021
+	Error		: CarRental.DataAccess.Concretes:CompanyRepository:GetAll::Error occured.
+	Stack Trace	: konum: CarRental.DataAccess.Concretes.CompanyRepository.GetAll() D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.DataAccess\Concretes\CompanyRepository.cs içinde: satır 218
+   konum: CarRental.BusinessLogic.Concretes.CompanyBusiness.LogIn(String Email, String Password) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\Concretes\CompanyBusiness.cs içinde: satır 122

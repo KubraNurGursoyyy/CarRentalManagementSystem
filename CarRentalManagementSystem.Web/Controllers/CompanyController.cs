@@ -1,10 +1,8 @@
-﻿using CarRental.Commons.Concretes.Helper;
+﻿using CarRental.BusinessLogic.Concretes;
+using CarRental.Commons.Concretes.Helper;
 using CarRental.Commons.Concretes.Logger;
-using CarRentalManagementSystem.Web.CompanyWebService;
-using CarRentalManagementSystem.Web.EmployeeWebService;
+using Companies= CarRental.Models.Concretes.Companies;
 using CarRentalManagementSystem.Web.Models;
-using CarRentalManagementSystem.Web.RentedVehicleService;
-using CarRentalManagementSystem.Web.VehicleWebService;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -12,6 +10,7 @@ using System.Web.Security;
 using Employees = CarRental.Models.Concretes.Employees;
 using RentedVehicles = CarRental.Models.Concretes.RentedVehicles;
 using Vehicles = CarRental.Models.Concretes.Vehicles;
+using CarRental.Commons.Concretes.Encryption;
 
 namespace CarRentalManagementSystem.Web.Controllers
 {
@@ -20,15 +19,15 @@ namespace CarRentalManagementSystem.Web.Controllers
         // GET: Company
         string username;
         int companyid;
-        string password;
         public ActionResult LogInCompany(LoginModel loginModel)
         {
             string ViewName = "CompanyView";
             try
             {
                 username = loginModel.Username;
-                password = loginModel.UserPassword;
-                if (LoginCompany(username, password))
+                loginModel.UserPassword=Encryption(loginModel.UserPassword);
+                
+                if (LoginCompany(username, loginModel.UserPassword))
                 {
                     companyid = GetIDByUsername(username);
                     FormsAuthentication.SetAuthCookie(loginModel.Username, true);
@@ -49,6 +48,29 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SignUpAsCompany(Companies companies)
+        {
+            try
+            {
+                companies.CompanyPassword = Encryption(companies.CompanyPassword);
+                if (CompanySignUp(companies))
+                {
+                    FormsAuthentication.SetAuthCookie(companies.CompanyEmail, true);
+                    return RedirectToAction("CompanyView");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                return View();
+            }
+        }
         public ViewResult CompanyView()
         {
             return View();
@@ -67,7 +89,8 @@ namespace CarRentalManagementSystem.Web.Controllers
             }
             try
             {
-                if (SaveEmployee(employee.EmployeesEmail, employee.EmployessPassword, companyid, employee.EmployeesPhoneNumber, employee.EmployeesAddress))
+                employee.EmployessPassword = Encryption(employee.EmployessPassword);
+                if (SaveEmployee(employee.EmployeesEmail, employee.EmployessPassword , companyid, employee.EmployeesPhoneNumber, employee.EmployeesAddress))
                     return RedirectToAction("CompanysEmployeesView");
                 return View();
             }
@@ -77,14 +100,13 @@ namespace CarRentalManagementSystem.Web.Controllers
                 return View();
             }
         }
-        [HttpPost]
-
+        [Authorize]
         public ActionResult CompanysVehiclesView()
         {
             return View(ListCompanysAllVehicles(companyid));
         }
-
-        public ActionResult CompanysRentedVehiclesView()
+        [Authorize]
+        public ActionResult CompanysRentedVehiclesView(int companyid)
         {
             return View(ListCompanysRentedVehicles(companyid));
         }
@@ -129,14 +151,33 @@ namespace CarRentalManagementSystem.Web.Controllers
         }
 
         #region PRIVATE METHODS
+        private string Encryption(string password)
+        {
+            return Sha1Encryption.SHA1(password);
+        }
+        private bool CompanySignUp(Companies companies)
+        {
+            try
+            {
+                using (var companyBusiness = new CompanyBusiness())
+                {
+                    return companyBusiness.Insert(companies);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("CompanyController::InsertCoompany::Error occured.", ex);
+            }
+        }
         private int GetIDByUsername(string username)
         {
             try
             {
-                using (var companysoapclient = new CompanyWebServiceSoapClient())
+                using (var companyBusiness = new CompanyBusiness())
                 {
                     int responseID = -1;
-                    foreach (var item in companysoapclient.GetAllCompanies())
+                    foreach (var item in companyBusiness.GetAll())
                     {
                         if (item.CompanyEmail == username)
                         {
@@ -152,29 +193,30 @@ namespace CarRentalManagementSystem.Web.Controllers
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
                 throw new Exception("Customer doesn't exists.");
             }
-            
-            
+
+
         }
+
         private bool AddVehicle(int vehiclescompanyId, string vehicleName, string vehicleModel, int VehicleInstantKm, bool hasairbag, int trunkVolume, int seatingcapacity, decimal dailyRentalPrice, int agelimitfordirivingthiscar, int kmlimitperday, int requireddirivinglicenseage)
         {
             try
             {
-                using (var vehiclesoapClient = new VehiclesWebServiceSoapClient())
+                using (var vehicleBusiness = new VehicleBusiness())
                 {
-                   return vehiclesoapClient.AddVehicle(new VehicleWebService.Vehicles()
+                    return vehicleBusiness.Insert(new Vehicles()
                     {
                         VehiclesCompanyId = vehiclescompanyId,
                         VehicleName = vehicleName,
                         VehicleModel = vehicleModel,
-                        VehiclesInstantKm =VehicleInstantKm,
-                        HasAirbag =hasairbag,
-                        TrunkVolume=trunkVolume,
+                        VehiclesInstantKm = VehicleInstantKm,
+                        HasAirbag = hasairbag,
+                        TrunkVolume = trunkVolume,
                         SeatingCapacity = seatingcapacity,
                         DailyRentalPrice = dailyRentalPrice,
-                        AgeLimitForDrivingThisCar =agelimitfordirivingthiscar,
-                        KmLimitPerDay=kmlimitperday,
-                        RequiredDrivingLicenseAge=requireddirivinglicenseage,
-                    }) ; 
+                        AgeLimitForDrivingThisCar = agelimitfordirivingthiscar,
+                        KmLimitPerDay = kmlimitperday,
+                        RequiredDrivingLicenseAge = requireddirivinglicenseage,
+                    });
                 }
             }
             catch (Exception ex)
@@ -182,16 +224,16 @@ namespace CarRentalManagementSystem.Web.Controllers
                 LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
                 throw new Exception("Customer doesn't exists.");
             }
-            
+
         }
         private List<Employees> ListAllEmployeesOfCompany(int companyid)
         {
             try
             {
-                using (var employeeSoapClient = new EmployeesWebServiceSoapClient())
+                using (var companyBusiness = new CompanyBusiness())
                 {
                     List<Employees> employees = new List<Employees>();
-                    foreach (var responsedEmployees in employeeSoapClient.GetCompanysAllEmployees(companyid))
+                    foreach (var responsedEmployees in companyBusiness.GetByID(companyid).Employees)
                     {
                         Employees castedEmployee = new Employees()
                         {
@@ -217,10 +259,10 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var rentedvehiclesSoapClient = new RentedVehiclesWebServiceSoapClient())
+                using (var companyBusiness = new CompanyBusiness())
                 {
                     List<RentedVehicles> allrentedvehicles = new List<RentedVehicles>();
-                    foreach (var responsedRentedVehicles in rentedvehiclesSoapClient.GetCompanysRentedVehicles(companyid))
+                    foreach (var responsedRentedVehicles in companyBusiness.GetByID(companyid).RentedVehicles)
                     {
                         RentedVehicles castedRentedVehicles = new RentedVehicles()
                         {
@@ -249,9 +291,9 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var employeeSoapClient = new EmployeesWebServiceSoapClient())
+                using (var employeeBusiness = new EmployeeBusiness())
                 {
-                    return employeeSoapClient.SignUpAsEmployee(new EmployeeWebService.Employees()
+                    return employeeBusiness.Insert(new Employees()
                     {
                         EmployeesEmail = email,
                         EmployessPassword = password,
@@ -272,10 +314,10 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var vehiclesSoapClient = new VehiclesWebServiceSoapClient())
+                using (var companysBusiness = new CompanyBusiness())
                 {
                     List<Vehicles> allvehicles = new List<Vehicles>();
-                    foreach (var responsedVehicles in vehiclesSoapClient.GetCompanysAllVehicles(companyid))
+                    foreach (var responsedVehicles in companysBusiness.GetByID(companyid).Vehicles)
                     {
                         Vehicles castedVehicles = new Vehicles()
                         {
@@ -307,9 +349,9 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var vehicleSoapClient = new VehiclesWebServiceSoapClient())
+                using (var vehicleBusiness = new VehicleBusiness())
                 {
-                    return vehicleSoapClient.DeleteVehicle(ID);
+                    return vehicleBusiness.DeleteById(ID);
                 }
             }
             catch (Exception ex)
@@ -319,15 +361,13 @@ namespace CarRentalManagementSystem.Web.Controllers
             }
         }
 
-
-        #endregion 
         private bool LoginCompany(string username, string password)
         {
             try
             {
-                using (var companySoapClient = new CompanyWebServiceSoapClient())
+                using (var companyBusiness = new CompanyBusiness())
                 {
-                    return companySoapClient.LogInAsCompany(username, password);
+                    return companyBusiness.LogIn(username, password);
                 }
             }
             catch (Exception ex)
@@ -337,5 +377,6 @@ namespace CarRentalManagementSystem.Web.Controllers
                 throw new Exception("CompanyController::LogInCompany::Error occured.", ex);
             }
         }
+        #endregion
     }
 }

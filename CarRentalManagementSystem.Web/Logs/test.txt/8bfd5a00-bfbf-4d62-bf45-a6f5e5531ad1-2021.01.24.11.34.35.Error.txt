@@ -1,0 +1,8 @@
+﻿	--------------------[Wrap Exception]--------------------
+	Source		: CarRentalManagementSystem.Web
+	Method		: LoginCustomer
+	Date		: 11:34:35
+	Time		: 24.01.2021
+	Error		: CustomerController::LogInCustomer::Error occured.
+	Stack Trace	: konum: CarRentalManagementSystem.Web.Controllers.CustomerController.LoginCustomer(String username, String password) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRentalManagementSystem.Web\CarRentalManagementSystem.Web\Controllers\CustomerController.cs içinde: satır 250
+   konum: CarRentalManagementSystem.Web.Controllers.CustomerController.LogInCustomer(LoginModel loginModel) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRentalManagementSystem.Web\CarRentalManagementSystem.Web\Controllers\CustomerController.cs içinde: satır 29

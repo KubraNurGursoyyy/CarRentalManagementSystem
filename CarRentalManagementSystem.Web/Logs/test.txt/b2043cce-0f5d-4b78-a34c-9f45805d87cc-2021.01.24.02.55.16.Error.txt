@@ -1,0 +1,8 @@
+﻿	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.DataAccess
+	Method		: GetByID
+	Date		: 14:55:16
+	Time		: 24.01.2021
+	Error		: CarRental.DataAccess.Concretes:CompanyRepository:GetByID::Insert:Error occured.
+	Stack Trace	: konum: CarRental.DataAccess.Concretes.CompanyRepository.GetByID(Int32 id) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.DataAccess\Concretes\CompanyRepository.cs içinde: satır 308
+   konum: CarRental.BusinessLogic.Concretes.CompanyBusiness.GetByID(Int32 id) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\Concretes\CompanyBusiness.cs içinde: satır 74

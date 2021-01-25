@@ -1,0 +1,8 @@
+﻿	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.DataAccess
+	Method		: GetAll
+	Date		: 11:51:49
+	Time		: 24.01.2021
+	Error		: CarRental.DataAccess.Concretes:CustomerRepository::GetAll:Error occured.
+	Stack Trace	: konum: CarRental.DataAccess.Concretes.CustomerRepository.GetAll() C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.DataAccess\Concretes\CustomerRepository.cs içinde: satır 172
+   konum: CarRental.BusinessLogic.Concretes.CustomerBusiness.LogIn(String Email, String Password) C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.BusinessLogic\Concretes\CustomerBusiness.cs içinde: satır 127

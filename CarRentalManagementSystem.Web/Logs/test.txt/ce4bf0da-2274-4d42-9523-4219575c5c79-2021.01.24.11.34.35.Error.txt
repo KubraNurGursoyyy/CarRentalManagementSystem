@@ -1,0 +1,10 @@
+﻿--------------------[Core Exception]--------------------
+Source		: CarRental.Commons
+Method		: .ctor
+Date		: 11:34:35
+Time		: 24.01.2021
+Error		: Nesne başvurusu bir nesnenin örneğine ayarlanmadı.
+Stack Trace	: konum: CarRental.Commons.Concretes.Logger.DBLogger..ctor() C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.Commons\Concretes\Logger\DBLogger.cs içinde: satır 14
+   konum: CarRental.Commons.Concretes.Helper.LogHelper.Log(LogTarget target, String message, Boolean isError) C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.Commons\Concretes\Helper\LogHelper.cs içinde: satır 27
+   konum: CarRental.BusinessLogic.Concretes.CustomerBusiness.LogIn(String Email, String Password) C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.BusinessLogic\Concretes\CustomerBusiness.cs içinde: satır 140
+   konum: CarRentalManagementSystem.Web.Controllers.CustomerController.LoginCustomer(String username, String password) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRentalManagementSystem.Web\CarRentalManagementSystem.Web\Controllers\CustomerController.cs içinde: satır 243

@@ -1,0 +1,16 @@
+﻿	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.BusinessLogic
+	Method		: LogIn
+	Date		: 14:06:13
+	Time		: 24.01.2021
+	Error		: CarRental.BusinessLogic.Concretes:CustomerBusiness::LogIn::Error occured.
+	Stack Trace	: konum: CarRental.BusinessLogic.Concretes.CustomerBusiness.LogIn(String Email, String Password) C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.BusinessLogic\Concretes\CustomerBusiness.cs içinde: satır 141
+   konum: CarRentalManagementSystem.Web.Controllers.CustomerController.LoginCustomer(String username, String password) D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRentalManagementSystem.Web\CarRentalManagementSystem.Web\Controllers\CustomerController.cs içinde: satır 239
+	--------------------[Wrap Exception]--------------------
+	Source		: CarRental.DataAccess
+	Method		: GetAll
+	Date		: 14:06:13
+	Time		: 24.01.2021
+	Error		: CarRental.DataAccess.Concretes:CustomerRepository::GetAll:Error occured.
+	Stack Trace	: konum: CarRental.DataAccess.Concretes.CustomerRepository.GetAll() C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.DataAccess\Concretes\CustomerRepository.cs içinde: satır 172
+   konum: CarRental.BusinessLogic.Concretes.CustomerBusiness.LogIn(String Email, String Password) C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.BusinessLogic\Concretes\CustomerBusiness.cs içinde: satır 127

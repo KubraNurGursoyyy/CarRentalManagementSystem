@@ -1,16 +1,16 @@
-﻿using CarRental.Commons.Concretes.Helper;
+﻿using CarRental.BusinessLogic;
+using CarRental.BusinessLogic.Concretes;
+using CarRental.Commons.Concretes.Helper;
 using CarRental.Commons.Concretes.Logger;
-using CarRentalManagementSystem.Web.CustomerWebService;
 using CarRentalManagementSystem.Web.Models;
-using CarRentalManagementSystem.Web.RentalRequestWebService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using System.Web.Security;
 using Vehicles = CarRental.Models.Concretes.Vehicles;
+using Customers = CarRental.Models.Concretes.Customers;
+using CarRental.Commons.Concretes.Encryption;
 
 namespace CarRentalManagementSystem.Web.Controllers
 {
@@ -23,6 +23,7 @@ namespace CarRentalManagementSystem.Web.Controllers
             string ViewName = "CustomerMainPageView";
             try
             {
+                loginModel.UserPassword = Encryption(loginModel.UserPassword);
                 if (LoginCustomer(loginModel.Username, loginModel.UserPassword))
                 {
                     FormsAuthentication.SetAuthCookie(loginModel.Username, true);
@@ -41,7 +42,7 @@ namespace CarRentalManagementSystem.Web.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CustomerSignUp(FormCollection collection)
+        public ActionResult CustomerSignUp(Customers customer)
         {
             if (!ModelState.IsValid)
             {
@@ -51,10 +52,10 @@ namespace CarRentalManagementSystem.Web.Controllers
 
             try
             {
-                if (InsertCustomer(collection["CustomerName"], collection["CustomerSurname"], collection["CustomerEmail"], collection["CustomerPassword"], 
-                    collection["CustomerAddress"], collection["CustomerPhoneNumber"], collection["SecondPhoneNumber"], collection["NationalIdcard"]))
+                customer.CustomerPassword = Encryption(customer.CustomerPassword);
+                if (InsertCustomer(customer))
                 { 
-                    FormsAuthentication.SetAuthCookie(collection["CustomerEmail"], true);
+                    FormsAuthentication.SetAuthCookie(customer.CustomerEmail, true);
                     return RedirectToAction(ViewName);
                 }
                 else
@@ -77,11 +78,12 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             return View();
         }
- 
+        [Authorize]
         public ViewResult CustomerVehiclePageView()
         {
             return View();
         }
+        [Authorize]
         public ActionResult CustomerRentalPageView()
         {
             return View();
@@ -91,6 +93,7 @@ namespace CarRentalManagementSystem.Web.Controllers
         public ActionResult ListAllAvailable(FormCollection collection)
         {
             TempData["requestedDateTime"] = collection["requestedDateTime"];
+            TempData["CompanyID"] = collection["CompanyID"]; 
             try
             {
                 switch (collection["Submit"])
@@ -111,7 +114,7 @@ namespace CarRentalManagementSystem.Web.Controllers
         }
         public ActionResult ListAllAvaliableVehiclesOfCompanyView()
         {
-            return View(GetAllAvaliableVehiclesOfCompany(Convert.ToDateTime(TempData["requestedDateTime"])));
+            return View(GetAllAvaliableVehiclesOfCompany(Convert.ToDateTime(TempData["requestedDateTime"]),Convert.ToInt32(TempData["CompanyID"])));
         }
         public ActionResult CancelRequest(int id)
         {
@@ -135,61 +138,66 @@ namespace CarRentalManagementSystem.Web.Controllers
             
         }
         #region PRIVATE METHODS
-        private List<Vehicles> GetAllAvaliableVehiclesOfCompany(DateTime date)
+        private string Encryption(string password)
+        {
+           return Sha1Encryption.SHA1(password);
+        }
+        private List<Vehicles> GetAllAvaliableVehiclesOfCompany(DateTime date, int companyid)
         {
             try
             {
-                List<Vehicles> vehicles = new List<Vehicles>();
-                using (var vehicleSoapclient = new VehicleWebService.VehiclesWebServiceSoapClient())
+                using (var companybusiness = new CompanyBusiness())
                 {
-                    foreach (var vehicle in GetAllAvaliableVehicles(date))
+                    using (var vehiclebusiness = new VehicleBusiness())
                     {
-                        using (var companySoapClient= new CompanyWebService.CompanyWebServiceSoapClient()) 
-                        { 
-                            foreach (var company in companySoapClient.GetAllCompanies())
+                        List<Vehicles> vehicles = companybusiness.GetByID(companyid).Vehicles.ToList();
+                        List<Vehicles> AllAvaliableVehicles = GetAllAvaliableVehicles(date);
+                        List<Vehicles> AvaliableVehiclesOfCompany = new List<Vehicles>();
+                        foreach (var availablevehicle in AllAvaliableVehicles)
+                        {
+                            foreach (var vehicleofcompany in vehicles)
                             {
-                                if (vehicle.VehiclesCompanyId==company.CompanyId)
+                                if (vehicleofcompany.VehiclesCompanyId == availablevehicle.VehiclesCompanyId)
                                 {
-                                    vehicles.Add(vehicle);
+                                    AllAvaliableVehicles.Add(vehicleofcompany);
                                 }
                             }
                         }
+                        return AllAvaliableVehicles;
                     }
-                    return vehicles;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                LogHelper.Log(LogTarget.File, ExceptionHelper.ExceptionToString(ex), true);
+                throw new Exception("Request doesn't exists.");
             }
         }
         private List<Vehicles> GetAllAvaliableVehicles(DateTime date)
         {
             try
             {
-                using (var vehiclesoapclient = new VehicleWebService.VehiclesWebServiceSoapClient())
+                using (var vehicleBusiness = new VehicleBusiness())
                 {
-                    List<Vehicles> vehicles = new List<Vehicles>();
-                    foreach (var responsevehicle in vehiclesoapclient.GetAllAvaliableVehicles(date).ToList())
+                   var vehicles = vehicleBusiness.GetAll();
+                    using (var rentedbusiness = new RentedVehicleBusiness())
                     {
-                        Vehicles vehicle = new Vehicles()
-                        {
-                            VehiclesCompanyId = responsevehicle.VehiclesCompanyId,
-                            VehicleName = responsevehicle.VehicleName,
-                            VehicleModel = responsevehicle.VehicleModel,
-                            VehiclesInstantKm = responsevehicle.VehiclesInstantKm,
-                            HasAirbag = responsevehicle.HasAirbag,
-                            TrunkVolume = responsevehicle.TrunkVolume,
-                            SeatingCapacity = responsevehicle.SeatingCapacity,
-                            DailyRentalPrice = responsevehicle.DailyRentalPrice,
-                            AgeLimitForDrivingThisCar = responsevehicle.AgeLimitForDrivingThisCar,
-                            KmLimitPerDay = responsevehicle.KmLimitPerDay,
-                            RequiredDrivingLicenseAge = responsevehicle.RequiredDrivingLicenseAge,
-                        };
-                        vehicles.Add(vehicle);
+                        var rentedVehicles = rentedbusiness.GetAll();             
+                        foreach (var rentedvehicle in rentedVehicles )
+                        {       
+                            List<DateTime> isntavaliabletimes = new List<DateTime>();
+                            for (DateTime time = rentedvehicle.PickUpDate.Date; time <= rentedvehicle.DropOffDate.Date; time = time.AddDays(1))
+                            {
+                                isntavaliabletimes.Add(time);
+                            }
+                            if (isntavaliabletimes.Contains(date))
+                            {
+                                var removethisvehicle = vehicleBusiness.GetByID(rentedvehicle.RentId);
+                                vehicles.Remove(removethisvehicle);
+                            }
+                        }
+                        return vehicles;
                     }
-                    return vehicles;
                 }
             }
             catch (Exception ex)
@@ -203,9 +211,9 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var rentalRequestWebSoapClient = new RentalRequestWebServiceSoapClient())
+                using (var rentalRequestBussiness = new RentalRequestBusiness())
                 {
-                    return rentalRequestWebSoapClient.CancelRentalRequest(ID);
+                    return rentalRequestBussiness.DeleteById(ID);
                 }
             }
             catch (Exception ex)
@@ -214,23 +222,13 @@ namespace CarRentalManagementSystem.Web.Controllers
                 throw new Exception("Request doesn't exists.");
             }
         }
-        private bool InsertCustomer(string name, string surname, string username, string password, string adress, string phonenumber, string secondphonenumber, string nationalid)
+        private bool InsertCustomer(Customers customers)
         {
             try
             {
-                using (var customerSoapClient = new CustomerWebServiceSoapClient())
+                using (var customerBusiness = new CustomerBusiness())
                 {
-                    return customerSoapClient.SignUpAsCustomer(new CustomerWebService.Customers()
-                    {
-                        CustomerName = name,
-                        CustomerSurname = surname,
-                        CustomerEmail = username,
-                        CustomerPassword = password,
-                        CustomerAddress = adress,
-                        CustomerPhoneNumber = phonenumber,
-                        SecondPhoneNumber = secondphonenumber,
-                        NationalIdcard = nationalid
-                    });
+                    return customerBusiness.Insert(customers);
                 }
             }
             catch (Exception ex)
@@ -244,9 +242,9 @@ namespace CarRentalManagementSystem.Web.Controllers
         {
             try
             {
-                using (var customerSoapClient= new CustomerWebServiceSoapClient())
+                using (var customerBusiness= new CustomerBusiness())
                 {
-                    return customerSoapClient.LogInAsCustomer(username, password);
+                    return customerBusiness.LogIn(username, password);
                 }
             }
             catch (Exception ex)

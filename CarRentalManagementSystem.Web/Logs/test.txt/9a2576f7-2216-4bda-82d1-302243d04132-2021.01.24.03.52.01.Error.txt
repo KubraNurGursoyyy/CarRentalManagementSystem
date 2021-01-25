@@ -1,0 +1,9 @@
+﻿--------------------[Core Exception]--------------------
+Source		: System.Data
+Method		: get_Int32
+Date		: 15:52:01
+Time		: 24.01.2021
+Error		: Veri null. Bu metot veya özellik Null değerler için çağrılamaz.
+Stack Trace	: konum: System.Data.SqlClient.SqlBuffer.get_Int32()
+   konum: System.Data.SqlClient.SqlDataReader.GetInt32(Int32 i)
+   konum: CarRental.DataAccess.Concretes.CompanyRepository.GetAll() D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.DataAccess\Concretes\CompanyRepository.cs içinde: satır 200

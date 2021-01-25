@@ -1,0 +1,9 @@
+﻿--------------------[Core Exception]--------------------
+Source		: CarRental.Commons
+Method		: GetConnectionString
+Date		: 11:34:33
+Time		: 24.01.2021
+Error		: Nesne başvurusu bir nesnenin örneğine ayarlanmadı.
+Stack Trace	: konum: CarRental.Commons.Concretes.Helper.DBHelper.GetConnectionString() C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.Commons\Concretes\Helper\DBHelper.cs içinde: satır 14
+   konum: CarRental.DataAccess.Concretes.CustomerRepository..ctor() C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.DataAccess\Concretes\CustomerRepository.cs içinde: satır 25
+   konum: CarRental.BusinessLogic.Concretes.CustomerBusiness.LogIn(String Email, String Password) C:\Users\hp-pc\Desktop\CarRentalManagementSystem\CarRentalManagementSystem\CarRentalManagementSystem-master\CarRental.BusinessLogic\Concretes\CustomerBusiness.cs içinde: satır 125
