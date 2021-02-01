@@ -1,0 +1,32 @@
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.BusinessLogic.dll.config
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.BusinessLogic.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.BusinessLogic.pdb
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Commons.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.DataAccess.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Models.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Commons.pdb
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.DataAccess.pdb
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.DataAccess.dll.config
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Models.pdb
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Models.dll.config
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.csprojAssemblyReference.cache
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.csproj.CoreCompileInputs.cache
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.csproj.CopyComplete
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.pdb
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.BusinessLogic.dll.config
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.BusinessLogic.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.BusinessLogic.pdb
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Commons.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.DataAccess.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Models.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Commons.pdb
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Models.pdb
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.Models.dll.config
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.DataAccess.pdb
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\bin\Debug\CarRental.DataAccess.dll.config
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.csprojAssemblyReference.cache
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.csproj.CoreCompileInputs.cache
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.csproj.CopyComplete
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.BusinessLogic\obj\Debug\CarRental.BusinessLogic.pdb

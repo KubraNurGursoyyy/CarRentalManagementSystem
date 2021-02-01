@@ -1,0 +1,25 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kayıt</title>
+    <link rel="stylesheet" href="~/Contents/LogInAndSignUpCSS.css">
+</head>
+<body>
+    @using (Html.BeginForm("SignUpAs", "LogInAndSignUp", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken();
+        <div class="modal-content animate">
+            <div class="container">
+                <p style="text-align:center"><b>Nasıl kaydolmak istersiniz ?</b></p>
+                <input id="customersignup" type="submit" name="SignUpAs" value="Kullanıcı" />
+                <input id="companysignup" type="submit" name="SignUpAs" value="Şirket" />
+            </div>
+        </div>
+    }
+</body>
+</html>

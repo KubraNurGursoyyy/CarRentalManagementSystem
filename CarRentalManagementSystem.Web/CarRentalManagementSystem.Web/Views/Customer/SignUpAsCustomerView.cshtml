@@ -1,0 +1,90 @@
+﻿@model CarRental.Models.Concretes.Customers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Müşteri Kayıt</title>
+    <link rel="stylesheet" href="~/Contents/LogInAndSignUpCSS.css">
+
+</head>
+<body>
+    @using (Html.BeginForm("CustomerSignUp", "Customer", FormMethod.Post))
+     {
+        @Html.AntiForgeryToken();
+        
+        <div class="modal-content animate">
+            <div class="container">
+                <b> @Html.LabelFor(model => model.CustomerName, "İsim", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control", @placeholder = "İsmini Giriniz*", @required = "required" } })
+                    @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.CustomerSurname, "Soy İsim", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CustomerSurname, new { htmlAttributes = new { @class = "form-control", @placeholder = "Soy İsminizi Giriniz*", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.CustomerSurname, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.CustomerEmail, "E-Mail", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CustomerEmail, new { htmlAttributes = new { @class = "form-control", @placeholder = "E-Mailinizi Giriniz*", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.CustomerEmail, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.CustomerPassword, "Şifre", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model =>model.CustomerPassword, new { htmlAttributes = new { @class = "form-control", @placeholder = "Şifrenizi Giriniz*", @type = "Password", @required="required" } })
+                        @Html.ValidationMessageFor(model => model.CustomerPassword, "", new { @class = "text-danger" })
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.CustomerAddress, "Adres", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CustomerAddress, new { htmlAttributes = new { @class = "form-control", @placeholder = "Adresinizi Giriniz*", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.CustomerAddress, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.CustomerPhoneNumber, "Telefon Numarası", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CustomerPhoneNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "Telefon Numaranızı Giriniz*: 5554443322", @pattern = "[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.CustomerPhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.SecondPhoneNumber, "İkinci Telefon Numarası", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.SecondPhoneNumber, new { htmlAttributes = new { @class = "form-control", @placeholder = "İkinci Telefon Numaranızı Giriniz*: 5554443322", @pattern = "[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.SecondPhoneNumber, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <b> @Html.LabelFor(model => model.NationalIdcard, "Ulusal Kimlik Numarası", htmlAttributes: new { @class = "control-label col-md-2" })</b>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.NationalIdcard, new { htmlAttributes = new { @class = "form-control", @placeholder = "T.C. Kimlik No, yabancı uyrukluysanız pasaport no girmeniz gerekmektedir*", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.NationalIdcard, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+      
+                <input type="submit" name="SignUp" value="Kaydol" />
+            </div>
+        </div>
+     }
+</body>
+</html>

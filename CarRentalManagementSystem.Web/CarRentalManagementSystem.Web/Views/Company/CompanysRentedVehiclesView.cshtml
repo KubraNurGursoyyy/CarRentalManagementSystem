@@ -1,0 +1,76 @@
+﻿@model IEnumerable<CarRental.Models.Concretes.RentedVehicles>
+
+@{
+    ViewBag.Title = "Kiralamalar";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!DOCTYPE html>
+
+<html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="~/Contents/EmployeesMainPages.css">
+
+</head>
+<body>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Encode("Kiralayan Kişi")
+            </th>
+            <th>
+                @Html.Encode("Kiralanan Arac")
+            </th>
+            <th>
+                @Html.Encode("Kiralanma Tarihi Başlangıcı")
+            </th>
+            <th>
+                @Html.Encode("Kiralanma Tarihi Bitişi")
+            </th>
+            <th>
+                @Html.Encode("Aracın Kiralanırkenki Kmsi")
+            </th>
+            <th>
+                @Html.Encode("Aracın İade Edilirkeni Kmsi")
+            </th>
+            <th>
+                @Html.Encode("Aracın Kiralanma Ucreti")
+            </th>
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DriverCustomerId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentedVehicleId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PickUpDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DropOffDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehiclesPickUpKm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehiclesDropOffKm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RentalPrice)
+                </td>
+            </tr>
+        }
+
+    </table>
+    </body>
+</html>

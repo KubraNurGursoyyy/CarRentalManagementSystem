@@ -1,0 +1,49 @@
+﻿@model IEnumerable<CarRental.Models.Concretes.Employees>
+
+<!DOCTYPE html>
+
+<html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Araç Kayıt</title>
+    <link rel="stylesheet" href="~/Contents/EmployeesMainPages.css">
+
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Yeni Çalışan Ekle", "SaveEmployeesToCompanyView")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Encode("Calışanın E-Maili")
+            </th>
+            <th>
+                @Html.Encode("Calışanın Telefon Numarası")
+            </th>
+            <th>
+                @Html.Encode("Calışanın Adresi")
+            </th>
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeesEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeesPhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmployeesAddress)
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

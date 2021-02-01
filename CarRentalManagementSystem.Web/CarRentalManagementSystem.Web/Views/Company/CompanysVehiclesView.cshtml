@@ -1,0 +1,100 @@
+﻿@model IEnumerable<CarRental.Models.Concretes.Vehicles>
+
+@{
+    ViewBag.Title = "Araçlar";
+}
+<!DOCTYPE html>
+
+<html lang="tr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Şirket Kayıt</title>
+    <link rel="stylesheet" href="~/Contents/EmployeesMainPages.css">
+
+</head>
+<body>
+    <h2>@ViewBag.Title</h2>
+
+    <p>
+        @Html.ActionLink("Yeni Araç Ekle", "AddVehicleToCompanyView")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.Encode("Aracın Adı")
+            </th>
+            <th>
+                @Html.Encode("Aracın Modeli")
+            </th>
+            <th>
+                @Html.Encode("Aracın Şu Anki Kilometresi")
+            </th>
+            <th>
+                @Html.Encode("Aracın Bagaj Hacmi")
+            </th>
+            <th>
+                @Html.Encode("Aracın Oturma Kapasitesi")
+            </th>
+            <th>
+                @Html.Encode("Bu Arac Icin Gereken Ehliyet Yaşı")
+            </th>
+            <th>
+                @Html.Encode("Aracın Gunluk Km Sınırı")
+            </th>
+            <th>
+                @Html.Encode("Aracın Hava Yastığı Var Mı")
+            </th>
+            <th>
+                @Html.Encode("Aracın Gunluk Kiralanma Ucreti")
+            </th>
+            <th>
+                @Html.Encode("Bu Aracı Surebilmek Icin Gereken Yaş Sınırı")
+            </th>
+            <th></th>
+        </tr>
+
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehicleModel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VehiclesInstantKm)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrunkVolume)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SeatingCapacity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RequiredDrivingLicenseAge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KmLimitPerDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HasAirbag)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DailyRentalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgeLimitForDrivingThisCar)
+                </td>
+                <td>
+                    @Html.ActionLink("Güncelle", "UpdateVehicleToCompany",  item.VehicleId ) |
+                    @Html.ActionLink("Delete", "DeleteVehicleFromCompany",Convert.ToInt32(item.VehicleId) )
+                </td>
+            </tr>
+        }
+
+    </table>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "Customer Main Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Contents/EmployeesMainPages.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="subnav" style="float:right">
+            @Html.ActionLink("Araçlar", "CustomerVehiclePageView") |
+            @Html.ActionLink("Kiralama İstekleri", "CustomerRentalPageView") |
+            @Html.ActionLink("Hesap Ayarları", "CustomerAccountPageView")
+        </div>
+    </div>
+    <h2>Hoşgeldiniz</h2>
+    <h3>Hangi İşlemi Yapmak İstersiniz?</h3>
+</body>
+</html>

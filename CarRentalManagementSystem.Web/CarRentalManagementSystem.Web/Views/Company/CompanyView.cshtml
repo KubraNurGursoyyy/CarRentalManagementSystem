@@ -1,0 +1,26 @@
+﻿@model CarRental.Models.Concretes.Companies
+
+@{
+    ViewBag.Title = "Company Main Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Contents/EmployeesMainPages.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="subnav" style="float:right">
+            @Html.ActionLink("Çalışanlar", "CompanysEmployeesView") |
+            @Html.ActionLink("Araçlarım", "CompanysVehiclesView") |
+            @Html.ActionLink("Kiralamalar", "CompanysRentedVehiclesView")
+        </div>
+    </div>
+    <h2>Hoşgeldiniz</h2>
+    <h3>Hangi İşlemi Yapmak İstersiniz?</h3>
+</body>
+</html>

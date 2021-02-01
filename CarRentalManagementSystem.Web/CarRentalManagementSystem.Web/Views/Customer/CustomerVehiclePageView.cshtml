@@ -1,0 +1,36 @@
+﻿@model IEnumerable<CarRental.Models.Concretes.Companies>
+
+@{
+    ViewBag.Title = "Customer Vehicles Page";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/Contents/EmployeesMainPages.css">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+</head>
+<body>
+    @using (Html.BeginForm("ListAllAvailable", "Customer", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        <h2>Hoşgeldiniz</h2>
+        <h3>Hangi İşlemi Yapmak İstersiniz?</h3> 
+        <h3>İşlem Yapacağınız tarih</h3>
+        <br/><input type="date" name="requestedDateTime" required/>
+        <input type="submit" name="Submit" value="Müsait Olan Tüm Araçlara Bakabilirsiniz" />
+        <h3>Şirketlere Göre Aratmak İsterseniz de aşağıdan seçebilirsiniz</h3>
+        foreach (var m in Model)
+        {
+            <p>@Html.Label(m.CompanyName, "Şirket İsmi", htmlAttributes: new { @class = "control-label col-md-2" })</p>
+            <input type="submit" name="Submit" value="Şirkete Ait Müsait Araçları Listele" />
+            <p> @Html.Editor( "Şirket ID", m.CompanyId.ToString(), new {@readonly="readonly", @name="CompanyID"})</p>
+        }
+    }
+
+</body>
+</html>
+

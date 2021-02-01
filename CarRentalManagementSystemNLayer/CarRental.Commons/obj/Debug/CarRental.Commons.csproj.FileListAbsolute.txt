@@ -1,0 +1,30 @@
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\CarRental.Commons.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\CarRental.Commons.pdb
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.AccessControl.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.Permissions.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.Principal.Windows.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.AccessControl.xml
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.Permissions.xml
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.Principal.Windows.xml
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.csproj.CoreCompileInputs.cache
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.csproj.CopyComplete
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.dll
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.pdb
+D:\Masaüstü\Yeni klasör\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.csprojAssemblyReference.cache
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\CarRental.Commons.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\CarRental.Commons.pdb
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Configuration.ConfigurationManager.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.AccessControl.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.Permissions.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.Principal.Windows.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Configuration.ConfigurationManager.xml
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.AccessControl.xml
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.Permissions.xml
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\bin\Debug\System.Security.Principal.Windows.xml
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.csproj.CoreCompileInputs.cache
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.csproj.CopyComplete
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.dll
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.pdb
+D:\Masaüstü\CarRentalManagementSystem\CarRentalManagementSystem\CarRental.Commons\obj\Debug\CarRental.Commons.csprojAssemblyReference.cache

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3FE49A0B-7B98-497B-B76D-6CC10B50D6AD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CarRental.BusinessLogic</RootNamespace>
+    <AssemblyName>CarRental.BusinessLogic</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Abstracts\IUserBusinessLogic.cs" />
+    <Compile Include="Concretes\CompanyBusiness.cs" />
+    <Compile Include="Concretes\CustomerBusiness.cs" />
+    <Compile Include="Concretes\EmployeeBusiness.cs" />
+    <Compile Include="Concretes\RentalRequestBusiness.cs" />
+    <Compile Include="Concretes\RentedVehicleBusiness.cs" />
+    <Compile Include="Concretes\VehicleBusiness.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CarRental.Commons\CarRental.Commons.csproj">
+      <Project>{2290ce19-2cf8-4086-b059-1da748a72d32}</Project>
+      <Name>CarRental.Commons</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.DataAccess\CarRental.DataAccess.csproj">
+      <Project>{1ae479f3-0fd9-445f-8167-d2c69f09f886}</Project>
+      <Name>CarRental.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CarRental.Models\CarRental.Models.csproj">
+      <Project>{9c62c82c-15ad-4947-bb4a-a73362750588}</Project>
+      <Name>CarRental.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
